@@ -25,7 +25,8 @@ const YammerFoxPreferences = {
 
     $("popup-autoclose").checked = this.util.pref().getBoolPref("autoClose");
     $("balloon-popup").checked   = this.util.pref().getBoolPref("popup");
-    $("sound").checked         = this.util.pref().getBoolPref("sound");
+    $("sound").checked           = this.util.pref().getBoolPref("sound");
+    $("showFullNames").checked   = this.util.pref().getBoolPref("showFullNames");
   },
 
   onUnload: function() {
@@ -46,12 +47,13 @@ const YammerFoxPreferences = {
   onSubmit: function() {
     var $ = this.util.$;
 
-    this.util.pref().setIntPref("interval", $("refresh-interval").value);
+    // TODO: make this a loop; normalize names?
+    this.util.pref().setIntPref("interval",       $("refresh-interval").value);
     this.util.pref().setIntPref("popup-interval", $("popup-interval").value);
-    this.util.pref().setBoolPref("autoClose", $("popup-autoclose").checked);
-    this.util.pref().setBoolPref("popup", $("balloon-popup").checked);
-
-    this.util.pref().setBoolPref("sound", $("sound").checked);
+    this.util.pref().setBoolPref("autoClose",     $("popup-autoclose").checked);
+    this.util.pref().setBoolPref("popup",         $("balloon-popup").checked);
+    this.util.pref().setBoolPref("sound",         $("sound").checked);
+    this.util.pref().setBoolPref("showFullNames", $("showFullNames").checked);
 
     this.util.notify("updatePref");
 

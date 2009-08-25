@@ -8,3 +8,4 @@ pref("extensions.yammerfox.sound", true);
 pref("extensions.yammerfox.session", "");
 pref("extensions.yammerfox.logDebug", false);
 pref("extensions.yammerfox.firstTime", true);
+pref("extensions.yammerfox.showFullNames", false);

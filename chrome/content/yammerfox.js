@@ -435,13 +435,24 @@ YammerFox.prototype = {
         elem.setAttribute("lock_url", "chrome://yammerfox/content/lock.png");
       }
 
+      var pref = Components.classes['@mozilla.org/preferences-service;1']
+        .getService(Components.interfaces.nsIPrefBranch);
+
+      var sender_name = msg.name;
+      var reply_name  = msg.reply_name;
+      var direct_name = msg.direct_name;
+      if (pref.getBoolPref("extensions.yammerfox.showFullNames")) {
+	 sender_name  = msg.full_name;
+         reply_name   = msg.reply_full_name;
+         direct_name  = msg.direct_full_name;
+      }
+
       if (msg.direct_name && msg.reply_name == null)
-        elem.setAttribute("screen_name", msg.name + " to: " + msg.direct_name + msg.priv_text);
+        elem.setAttribute("screen_name", sender_name + " to: " + direct_name + msg.priv_text);
       else if (msg.reply_name)
-        elem.setAttribute("screen_name", msg.name + " re: " + msg.reply_name + msg.priv_text);
+        elem.setAttribute("screen_name", sender_name + " re: " + reply_name + msg.priv_text);
       else
-        elem.setAttribute("screen_name", msg.name);
-        
+        elem.setAttribute("screen_name", sender_name);
         
       elem.setAttribute("name", msg.name);
 

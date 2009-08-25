@@ -74,6 +74,9 @@
         <row>
           <checkbox id="sound" label="&yammerfox.sound;"/>
         </row>
+        <row>
+          <checkbox id="showFullNames" label="&yammerfox.showFullNames;" />
+        </row>
       </rows>
     </grid>
   </groupbox>

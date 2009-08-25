@@ -26,7 +26,6 @@
 <!ENTITY yammerfox.balloon "Popup display">
 <!ENTITY yammerfox.showBalloon "Show balloon popup">
 <!ENTITY yammerfox.cookie "Cookie">
-<!ENTITY yammerfox.overwriteCookie "Overwrite browser cookie">
-<!ENTITY yammerfox.overwriteCookie.tooltip "If check this box, YammerFox overwrite your browser cookie">
-<!ENTITY yammerfox.sound "Notification sound">
+<!ENTITY yammerfox.sound "Play a sound when each message is received">
 <!ENTITY yammerfox.soundButton "Browse...">
+<!ENTITY yammerfox.showFullNames "Show full names of message posters">
