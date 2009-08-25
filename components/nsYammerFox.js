@@ -4,8 +4,7 @@ const CONTRACT_ID = "@yammer.inc/yammerfox;1";
 const NETWORK_TIMEOUT_TIME = 120;
 const MAX_STORED_MESSAGES = 40;
 
-//const BASE_URL = "http://aa.com:3000/";
-const BASE_URL = "https://staging.yammer.com/";
+const BASE_URL = "https://www.yammer.com/";
 const API_URL  = BASE_URL+"api/v1/";
 const APP_NAME = "YammerFox";
 const YAMMERFOXV = "1.0.7";
