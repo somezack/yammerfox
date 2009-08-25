@@ -424,7 +424,7 @@ YammerFox.prototype = {
     elem.setAttribute("messageId", msg.id);
 
     try {
-      elem.setAttribute("href", this.baseURLFromComponent() + "users/" + msg.name);
+      elem.setAttribute("href", msg.sender_url);
 
       if (msg.priv_msg) { 
         elem.setAttribute("priv", true);
@@ -466,29 +466,29 @@ YammerFox.prototype = {
 
       elem.setAttribute("time", time_and_group);
       
-      var trimed_text = msg.body.plain;
-      if (trimed_text.length > 160) {
+      var trimmed_text = msg.body.plain;
+      if (trimmed_text.length > 160) {
         var next_space = 0;
-        for (var i=160; i<trimed_text.length; i++) {
-          if (trimed_text.charAt(i) == ' ') {
+        for (var i=160; i<trimmed_text.length; i++) {
+          if (trimmed_text.charAt(i) == ' ') {
             next_space = i;
             break;
           }
         }
         if (next_space == 0)
-          next_space = trimed_text.length;
+          next_space = trimmed_text.length;
         
-        trimed_text = trimed_text.substr(0, next_space) + " ...";
+        trimmed_text = trimmed_text.substr(0, next_space) + " ...";
       }
       
-      var textnode = this.replaceLinkText(trimed_text);
+      var textnode = this.replaceLinkText(trimmed_text);
       for (i in msg.attachments) {
         var anchor = this.createAnchorText(msg.attachments[i].web_url, msg.attachments[i].name);
         textnode.appendChild(document.createTextNode(" "));
         textnode.appendChild(anchor);
       }
       elem.appendChild(textnode);
-      elem.setAttribute("text", trimed_text);
+      elem.setAttribute("text", trimmed_text);
       
       if (msg.reply_txt) {
         textnode.setAttribute("tooltiptext", msg.reply_txt);

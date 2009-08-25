@@ -992,23 +992,24 @@ var yammerfox_prototypes = {
     
     for (i in obj.messages) {
       try {
+        var reference               = this._refs_by_type[obj.messages[i].sender_type][obj.messages[i].sender_id];
         obj.messages[i].priv_text   = "";
         obj.messages[i].priv_msg    = false;
         obj.messages[i].priv_group  = false;
-        var reference = this._refs_by_type[obj.messages[i].sender_type][obj.messages[i].sender_id];
+        obj.messages[i].name        = reference.name;
         obj.messages[i].full_name   = reference.full_name;
-        obj.messages[i].name = reference.name;
         obj.messages[i].mugshot_url = reference.mugshot_url;
+        obj.messages[i].sender_url  = reference.web_url;
   
         if (obj.messages[i].replied_to_id) {
           reference = this._refs_by_type[this._refs_by_type['message'][obj.messages[i].replied_to_id].sender_type][this._refs_by_type['message'][obj.messages[i].replied_to_id].sender_id];
           obj.messages[i].reply_name      = reference.name;
           obj.messages[i].reply_full_name = reference.full_name;
-          var trimed_text = this._refs_by_type['message'][obj.messages[i].replied_to_id].body.plain;
-          if (trimed_text.length > 160)
-            trimed_text = trimed_text.substr(0, 160) + "...";
+          var trimmed_text = this._refs_by_type['message'][obj.messages[i].replied_to_id].body.plain;
+          if (trimmed_text.length > 160)
+            trimmed_text = trimmed_text.substr(0, 160) + "...";
    
-          obj.messages[i].reply_txt  = trimed_text;
+          obj.messages[i].reply_txt  = trimmed_text;
           obj.messages[i].thread_url = this._refs_by_type['thread'][obj.messages[i].thread_id].web_url;
         }
         if (obj.messages[i].group_id) {
